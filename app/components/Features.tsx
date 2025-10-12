@@ -22,7 +22,7 @@ export default function Features() {
     {
       icon: <Smartphone size={24} />,
       title: 'Responsive',
-      description: 'Adaptable a todos los dispositivos'
+      description: 'Adaptable a dispositivos'
     },
     {
       icon: <Database size={24} />,
@@ -37,7 +37,7 @@ export default function Features() {
   ];
 
   return (
-    <section className="bg-zinc-950 py-8 px-4 border-t border-zinc-900">
+    <section className="bg-zinc-950 py-12 px-4 border-t border-zinc-800">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {features.map((feature, index) => (
@@ -45,11 +45,11 @@ export default function Features() {
               key={index}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-16 h-16 rounded-full bg-zinc-900/50 border border-zinc-800 flex items-center justify-center mb-4 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-zinc-950 group-hover:scale-110 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-zinc-900/50 border border-zinc-800 flex items-center justify-center mb-4 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all duration-300">
                 {feature.icon}
               </div>
               <h3 className="text-white font-semibold mb-2 text-sm">{feature.title}</h3>
-              <p className="text-gray-500 text-xs leading-relaxed">{feature.description}</p>
+              <p className="text-gray-400 text-xs leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

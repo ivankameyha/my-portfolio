@@ -4,7 +4,7 @@ import { Rocket, Code2, Palette, Database, Globe, Shield, Zap, MessageCircle, Ma
 import { useState } from 'react';
 
 export default function CustomSolutionsSection() {
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedService, setSelectedService] = useState<number | null>(null);
 
   const customServices = [
     {
@@ -49,7 +49,7 @@ export default function CustomSolutionsSection() {
     {
       step: '01',
       title: 'Consulta Inicial',
-      description: 'Conversamos sobre tu proyecto, objetivos y necesidades específicas',
+      description: 'Conversamos sobre tu proyecto, objetivos y necesidades',
       icon: <MessageCircle size={24} />
     },
     {
@@ -77,14 +77,14 @@ export default function CustomSolutionsSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-full px-4 py-2 mb-4">
+          <div className="inline-flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-full px-4 py-2 mb-6">
             <span className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
             <span className="text-gray-600 text-sm font-medium">Proyectos</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            ¿Necesitás algo <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">diferente</span>?
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            ¿Necesitás algo <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">diferente</span>?
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Si tu proyecto no encaja en los planes estándar, puedo crear una solución 100% personalizada.
             Desde sistemas empresariales complejos hasta ideas innovadoras que necesitan tecnología a medida.
           </p>
@@ -95,25 +95,25 @@ export default function CustomSolutionsSection() {
           {customServices.map((service, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 border-2 transition-all duration-300 cursor-pointer group ${
+              className={`bg-white rounded-2xl p-8 border-2 transition-all duration-300 cursor-pointer group shadow-lg hover:shadow-xl ${
                 selectedService === index
-                  ? 'border-blue-500 shadow-xl shadow-blue-100 scale-105'
-                  : 'border-gray-200 hover:border-blue-300 hover:shadow-lg'
+                  ? 'border-cyan-400 scale-105'
+                  : 'border-gray-200 hover:border-cyan-400'
               }`}
               onClick={() => setSelectedService(selectedService === index ? null : index)}
             >
               {/* Icono */}
-              <div className="bg-gradient-to-br from-blue-100 to-purple-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-br from-cyan-400 to-blue-500 text-white w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {service.icon}
               </div>
 
               {/* Título */}
-              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-cyan-500 transition-colors">
                 {service.title}
               </h3>
 
               {/* Descripción */}
-              <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+              <p className="text-gray-600 text-sm mb-4">
                 {service.description}
               </p>
 
@@ -121,8 +121,8 @@ export default function CustomSolutionsSection() {
               <div className="space-y-2">
                 {service.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                    <span className="text-gray-700 text-sm">{feature}</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>
+                    <span className="text-gray-600 text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -131,16 +131,14 @@ export default function CustomSolutionsSection() {
         </div>
 
         {/* Proceso de Trabajo */}
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 mb-16 relative overflow-hidden">
-          {/* Efecto de fondo */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAgNGgtMnYyaDJ2LTJ6bTAgMGgydjJoLTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+        <div className="bg-zinc-950 rounded-2xl p-12 mb-16 relative overflow-hidden shadow-xl">
           
           <div className="relative z-10">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h3 className="text-4xl font-bold text-white mb-4">
                 ¿Cómo trabajamos juntos?
               </h3>
-              <p className="text-blue-200 max-w-2xl mx-auto">
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                 Un proceso transparente y colaborativo desde la idea hasta el lanzamiento
               </p>
             </div>
@@ -150,17 +148,17 @@ export default function CustomSolutionsSection() {
                 <div key={index} className="relative">
                   {/* Línea conectora (solo desktop) */}
                   {index < process.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 opacity-30"></div>
+                    <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-cyan-400 opacity-30"></div>
                   )}
                   
                   <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all group">
                     {/* Número de paso */}
-                    <div className="text-5xl font-bold text-blue-400/30 mb-3">
+                    <div className="text-5xl font-bold text-cyan-400 opacity-30 mb-3">
                       {step.step}
                     </div>
 
                     {/* Icono */}
-                    <div className="bg-gradient-to-br from-blue-400 to-purple-400 text-white w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <div className="bg-gradient-to-br from-cyan-400 to-blue-500 text-white w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       {step.icon}
                     </div>
 
@@ -170,7 +168,7 @@ export default function CustomSolutionsSection() {
                     </h4>
 
                     {/* Descripción */}
-                    <p className="text-blue-100 text-sm leading-relaxed">
+                    <p className="text-gray-400 text-sm">
                       {step.description}
                     </p>
                   </div>
@@ -181,43 +179,30 @@ export default function CustomSolutionsSection() {
         </div>
 
         {/* CTA Principal */}
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
-          {/* Efectos de fondo */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full opacity-10 blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl"></div>
+        <div className="bg-zinc-950 rounded-2xl p-12 text-center shadow-xl">
           
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h3 className="text-4xl font-bold text-white mb-4">
               Empecemos a dar vida a tu idea
             </h3>
-            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
               El primer paso es una conversación sin compromiso. Contame tu proyecto
               y te preparo un presupuesto detallado y personalizado.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="https://wa.me/5493814000000?text=Hola! Tengo un proyecto personalizado en mente"
+                href="https://wa.me/5493813423617?text=Hola! Tengo un proyecto personalizado en mente"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-cyan-500 font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-2xl hover:scale-105 group"
+                className="inline-flex items-center gap-3 bg-cyan-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:bg-cyan-400"
               >
                 <MessageCircle size={24}/>
                 <span>Solicitar Presupuesto</span>
               </a>
-              
-              <a
-                href="https://calendly.com/tuusuario"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-xl transition-all border-2 border-white/30 hover:bg-white/20 hover:border-white/50"
-              >
-                <Calendar size={24} />
-                <span>Agendar Reunión</span>
-              </a>
             </div>
 
-            <p className="text-blue-100 text-sm mt-6">
+            <p className="text-gray-400 text-sm mt-6">
               💬 Respuesta en menos de 24 horas • Consultas sin costo
             </p>
           </div>
