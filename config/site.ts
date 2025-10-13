@@ -15,7 +15,7 @@ export const siteConfig = {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/ivankameyha/",
     linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/in/ivankameyha/",
     github: process.env.NEXT_PUBLIC_GITHUB_URL || "https://github.com/ivankameyha",
-    twitter: "", // Agregar si tienes
+    twitter: "",
   },
 
   whatsappMessages: {
@@ -25,11 +25,19 @@ export const siteConfig = {
     planPro: "Hola! Me interesa el plan Web Pro",
     custom: "Hola! Tengo un proyecto personalizado en mente",
     consultation: "Hola! Necesito asesoramiento sobre qué plan elegir",
-  },
+  } as const,
 
-  // Función helper para generar URLs de WhatsApp
-  getWhatsAppUrl: (message: keyof typeof siteConfig.whatsappMessages = 'general') => {
-    const msg = siteConfig.whatsappMessages[message];
-    return `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(msg)}`;
+  getWhatsAppUrl: (message: 'general' | 'planSimple' | 'planCompleta' | 'planPro' | 'custom' | 'consultation' = 'general') => {
+    const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5493813423617";
+    const messages = {
+      general: "Hola! Me interesa tu trabajo",
+      planSimple: "Hola! Me interesa el plan Web Simple",
+      planCompleta: "Hola! Me interesa el plan Web Completa",
+      planPro: "Hola! Me interesa el plan Web Pro",
+      custom: "Hola! Tengo un proyecto personalizado en mente",
+      consultation: "Hola! Necesito asesoramiento sobre qué plan elegir",
+    };
+    const msg = messages[message];
+    return `https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`;
   },
-};
+} as const;
