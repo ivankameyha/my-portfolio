@@ -1,8 +1,40 @@
 'use client';
 
 import { Github, Linkedin, Instagram, Facebook, Lightbulb } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 export default function Hero() {
+  const socialLinks = [
+    { 
+      icon: <Facebook size={20} />, 
+      href: siteConfig.social.facebook,
+      label: 'Facebook',
+      desktopSize: 20,
+      mobileSize: 24
+    },
+    { 
+      icon: <Instagram size={20} />, 
+      href: siteConfig.social.instagram,
+      label: 'Instagram',
+      desktopSize: 20,
+      mobileSize: 24
+    },
+    { 
+      icon: <Linkedin size={20} />, 
+      href: siteConfig.social.linkedin,
+      label: 'LinkedIn',
+      desktopSize: 20,
+      mobileSize: 24
+    },
+    { 
+      icon: <Github size={20} />, 
+      href: siteConfig.social.github,
+      label: 'GitHub',
+      desktopSize: 20,
+      mobileSize: 24
+    },
+  ];
+
   return (
     <section id="inicio" className="min-h-[75vh] flex flex-col justify-center bg-zinc-950 px-4 relative pt-20 pb-4">
       {/* Social Media - Sidebar derecha (solo desktop) */}
@@ -11,42 +43,18 @@ export default function Hero() {
           <span className="text-gray-400 text-xs mb-2 tracking-wide">
             Follow me
           </span>
-          <a 
-            href="https://www.facebook.com/ivan.kameyha.7" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="Facebook"
-          >
-            <Facebook size={20} />
-          </a>
-          <a 
-            href="https://www.instagram.com/ivankameyha/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={20} />
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/ivankameyha/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a 
-            href="https://github.com/ivankameyha" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={20} />
-          </a>
+          {socialLinks.map((social, index) => (
+            <a 
+              key={index}
+              href={social.href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-cyan-400 transition-colors"
+              aria-label={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
       </div>
 
@@ -88,42 +96,21 @@ export default function Hero() {
 
         {/* Redes sociales mobile */}
         <div className="flex lg:hidden justify-center space-x-6 mt-8">
-          <a 
-            href="https://www.facebook.com/ivan.kameyha.7" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="Facebook"
-          >
-            <Facebook size={24} />
-          </a>
-          <a 
-            href="https://www.instagram.com/ivankameyha/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={24} />
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/ivankameyha/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={24} />
-          </a>
-          <a 
-            href="https://github.com/ivankameyha" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-cyan-400 transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={24} />
-          </a>
+          {socialLinks.map((social, index) => (
+            <a 
+              key={index}
+              href={social.href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-cyan-400 transition-colors"
+              aria-label={social.label}
+            >
+              <Facebook size={social.mobileSize} className={index === 0 ? '' : 'hidden'} />
+              <Instagram size={social.mobileSize} className={index === 1 ? '' : 'hidden'} />
+              <Linkedin size={social.mobileSize} className={index === 2 ? '' : 'hidden'} />
+              <Github size={social.mobileSize} className={index === 3 ? '' : 'hidden'} />
+            </a>
+          ))}
         </div>
       </div>
     </section>

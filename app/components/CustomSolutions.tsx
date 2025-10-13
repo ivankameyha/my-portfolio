@@ -1,5 +1,6 @@
 'use client';
 
+import { siteConfig } from '@/config/site';
 import { Rocket, Code2, Palette, Database, Globe, Shield, Zap, MessageCircle, Mail, Calendar } from 'lucide-react';
 import { useState } from 'react';
 
@@ -192,7 +193,7 @@ export default function CustomSolutionsSection() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="https://wa.me/5493813423617?text=Hola! Tengo un proyecto personalizado en mente"
+                href={siteConfig.getWhatsAppUrl('custom')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-cyan-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:bg-cyan-400"

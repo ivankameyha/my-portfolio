@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
     {
       name: 'Javier González',
       role: 'Peluquería',
-      rating: 3,
+      rating: 4,
       category: 'Profesionalismo',
       text: 'Muy atento y profesional. Entrega rápida y cumplió con todo lo prometido.',
       avatar: 'JG'
@@ -115,7 +115,7 @@ export default function TestimonialsSection() {
       role: 'Barbería Clásica',
       rating: 5,
       category: 'Calidad Premium',
-      text: 'Diseño de calidad, código limpio. Recomiendo este template 100%.',
+      text: 'Diseño de calidad, código limpio. Recomiendo esta plantilla 100%.',
       avatar: 'FT'
     },
     {

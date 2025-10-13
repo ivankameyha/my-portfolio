@@ -2,6 +2,7 @@
 
 import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
+import { siteConfig } from '@/config/site';
 
 export default function PricingSection() {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
@@ -15,6 +16,7 @@ export default function PricingSection() {
       price: '$60.000',
       popular: false,
       demoUrl: '/demos/simple',
+      whatsappMessage: 'planSimple' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-emerald-400 to-green-500',
         border: 'border-emerald-400',
@@ -42,6 +44,7 @@ export default function PricingSection() {
       price: '$120.000',
       popular: true,
       demoUrl: '/demos/completa',
+      whatsappMessage: 'planCompleta' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-cyan-400 to-blue-500',
         border: 'border-cyan-400',
@@ -70,6 +73,7 @@ export default function PricingSection() {
       price: '$360.000',
       popular: false,
       demoUrl: '/demos/pro',
+      whatsappMessage: 'planPro' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-purple-400 to-pink-500',
         border: 'border-purple-400',
@@ -192,7 +196,7 @@ export default function PricingSection() {
                       <span>Ver muestra</span>
                     </a> */}
                     <a
-                      href={`https://wa.me/5493813423617?text=Hola! Me interesa el plan ${plan.name}`}
+                      href={siteConfig.getWhatsAppUrl(plan.whatsappMessage)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-white/10 backdrop-blur-sm border-2 border-gray-200 text-gray-600 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 hover:bg-gray-50"
@@ -217,7 +221,7 @@ export default function PricingSection() {
             Puedo crear un plan personalizado según tus necesidades específicas.
           </p>
           <a
-            href="https://wa.me/5493813423617?text=Hola! Necesito asesoramiento sobre qué plan elegir"
+            href={siteConfig.getWhatsAppUrl('consultation')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-cyan-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:bg-cyan-400"

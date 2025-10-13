@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,9 +26,9 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div className="flex flex-col leading-tight">
               <span className="text-white font-bold text-xl">
-                Iván <span className="text-xs font-bold px-1 border border-cyan-400 rounded-md text-cyan-400">1.0</span>
+                {siteConfig.name.split(' ')[0]} <span className="text-xs font-bold px-1 border border-cyan-400 rounded-md text-cyan-400">1.0</span>
               </span>
-              <span className="text-white font-bold text-xl -mt-1">Kameyha.</span>
+              <span className="text-white font-bold text-xl -mt-1">{siteConfig.name.split(' ')[1]}.</span>
             </div>
           </Link>
         </div>
@@ -53,7 +54,7 @@ export default function Header() {
 
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/5493813423617?text=Hola!%20Me%20interesa%20tu%20trabajo"
+          href={siteConfig.getWhatsAppUrl('general')}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
@@ -106,7 +107,7 @@ export default function Header() {
             
             {/* WhatsApp en Mobile Menu */}
             <a
-              href="https://wa.me/5493813423617?text=Hola!%20Me%20interesa%20tu%20trabajo"
+              href={siteConfig.getWhatsAppUrl('general')}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold py-3 rounded-xl transition-all mt-4"

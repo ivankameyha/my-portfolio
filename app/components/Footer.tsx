@@ -8,31 +8,16 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import { siteConfig } from '@/config/site';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
-      icon: <Facebook size={20} />,
-      href: "https://www.facebook.com/ivan.kameyha.7",
-      name: "Facebook",
-    },
-    {
-      icon: <Instagram size={20} />,
-      href: "https://www.instagram.com/ivankameyha/",
-      name: "Instagram",
-    },
-    {
-      icon: <Linkedin size={20} />,
-      href: "https://www.linkedin.com/in/ivankameyha/",
-      name: "LinkedIn",
-    },
-    {
-      icon: <Github size={20} />,
-      href: "https://github.com/ivankameyha",
-      name: "GitHub",
-    },
+    { icon: <Facebook size={20} />, href: siteConfig.social.facebook, name: "Facebook" },
+    { icon: <Instagram size={20} />, href: siteConfig.social.instagram, name: "Instagram" },
+    { icon: <Linkedin size={20} />, href: siteConfig.social.linkedin, name: "LinkedIn" },
+    { icon: <Github size={20} />, href: siteConfig.social.github, name: "GitHub" },
   ];
 
   return (
@@ -72,15 +57,15 @@ export default function Footer() {
           {/* Información de contacto */}
           <div className="space-y-3 pt-4 border-t border-zinc-800">
             <a 
-              href="mailto:kameyhaivan@gmail.com" 
+              href={`mailto:${siteConfig.contact.email}`}
               className="flex items-center justify-center gap-3 text-gray-400 hover:text-cyan-400 transition-colors py-2"
             >
               <Mail size={18} />
-              <span className="text-sm">kameyhaivan@gmail.com</span>
+              <span className="text-sm">{siteConfig.contact.email}</span>
             </a>
             <div className="flex items-center justify-center gap-3 text-gray-400 py-2">
               <MapPin size={18} />
-              <span className="text-sm">Tucumán, Argentina</span>
+              <span>{siteConfig.contact.location}</span>
             </div>
           </div>
 
