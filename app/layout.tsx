@@ -5,6 +5,7 @@ import MicrosoftClarity from "./components/MicrosoftClarity";
 import "./globals.css";
 import PreloaderMinimal from "./components/Preloader";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -77,7 +78,7 @@ export const metadata: Metadata = {
 
   // Verificación (añadir cuando tengas las cuentas)
   verification: {
-    google: "tu-codigo-de-verificacion-google", // Cambiar cuando verifiques
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION, // Cambiar cuando verifiques
     // yandex: "tu-codigo-yandex",
     // bing: "tu-codigo-bing",
   },
