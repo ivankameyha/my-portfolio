@@ -75,7 +75,7 @@ export default function Hero() {
 
         {/* Título principal */}
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-          Desarrollador Full Stack<br />
+          Desarrollador <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Full Stack</span><br />
           <span className="text-gray-400">creando experiencias</span><br />
           <span className="text-gray-400">innovadoras.</span>
         </h1>

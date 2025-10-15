@@ -7,7 +7,7 @@ export const siteConfig = {
     email: process.env.NEXT_PUBLIC_EMAIL || "kameyhaivan@gmail.com",
     phone: "+54 9 381 342-3617",
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5493813423617",
-    location: "Tucumán, Argentina",
+    location: "Tucumán, AR",
   },
 
   social: {
