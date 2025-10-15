@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
     {
       name: 'Martín Castro',
       role: 'Panadería',
-      rating: 2,
+      rating: 3,
       category: 'Código Limpio',
       text: 'Esta bien',
       avatar: 'MC'

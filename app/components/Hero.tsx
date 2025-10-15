@@ -65,7 +65,9 @@ export default function Hero() {
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-zinc-950"></div>
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-zinc-950"></div>
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-zinc-950"></div>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-zinc-950"></div>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-zinc-950 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">IK</span>
+            </div>
           </div>
           <div className="ml-3 text-left">
             <p className="text-white font-semibold text-sm">+50 clientes satisfechos</p>

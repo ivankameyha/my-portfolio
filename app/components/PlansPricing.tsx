@@ -16,6 +16,7 @@ export default function PricingSection() {
       description: 'Landing profesional 100% personalizada',
       oldPrice: '$80.000',
       price: '$60.000',
+      pay: 'Pago único',
       discount: '25% OFF',
       popular: false,
       mockupUrl: 'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/simple_website_mockup_ohxutj.png',
@@ -48,6 +49,7 @@ export default function PricingSection() {
       oldPrice: '$160.000',
       price: '$120.000',
       discount: '25% OFF',
+      pay: 'Pago único',
       popular: true,
       mockupUrl: 'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/full_website_mockup_bpy5z6.png',
       whatsappMessage: 'planCompleta' as keyof typeof siteConfig.whatsappMessages,
@@ -77,9 +79,10 @@ export default function PricingSection() {
       name: 'Web Pro',
       tagline: 'Perfecta para marcas que buscan automatizar reservas y cobros',
       description: 'Sistema completo de reservas y pagos online',
-      oldPrice: '$640.000',
+      oldPrice: '$600.000',
       price: '$480.000',
-      discount: '25% OFF',
+      discount: '20% OFF',
+      pay: 'Pago único por desarrollo + mantenimiento mensual obligatorio',
       popular: false,
       mockupUrl: 'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/pro_website_mockup_hr57xf.png',
       whatsappMessage: 'planPro' as keyof typeof siteConfig.whatsappMessages,
@@ -102,6 +105,7 @@ export default function PricingSection() {
         'Notificaciones automáticas',
         'Reportes y estadísticas',
         'Mantenimiento técnico y soporte premium',
+        'Hosting y dominio .com / .com.ar',
         'Entrega en 20-25 días'
       ]
     }
@@ -197,7 +201,7 @@ export default function PricingSection() {
                         {plan.price}
                       </span>
                     </div>
-                    <p className="text-gray-400 text-sm mt-1">Pago único</p>
+                    <p className="text-gray-400 text-sm mt-1">{plan.pay}</p>
                   </div>
 
                   {/* Features */}
