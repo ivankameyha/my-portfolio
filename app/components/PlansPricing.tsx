@@ -1,12 +1,14 @@
 'use client';
 
-import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle, X } from 'lucide-react';
+import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { siteConfig } from '@/config/site';
+import React from 'react';
 
 export default function PricingSection() {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
-  const [selectedMockup, setSelectedMockup] = useState<string | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const plans = [
     {
@@ -19,7 +21,11 @@ export default function PricingSection() {
       pay: 'Pago único',
       discount: '25% OFF',
       popular: false,
-      mockupUrl: 'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/simple_website_mockup_ohxutj.png',
+      mockupUrls: [
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/simple_website_mockup_ohxutj.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/simple_web_veterinaria_zomp77.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/simple_web_forrajeria_dphlh5.png'
+      ],
       whatsappMessage: 'planSimple' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-emerald-400 to-green-500',
@@ -51,7 +57,11 @@ export default function PricingSection() {
       discount: '25% OFF',
       pay: 'Pago único',
       popular: true,
-      mockupUrl: 'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/full_website_mockup_bpy5z6.png',
+      mockupUrls: [
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/full_web_negocios_zviuqd.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/full_website_mockup_bpy5z6.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/full_web_barber_xjixxz.png'
+      ],
       whatsappMessage: 'planCompleta' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-cyan-400 to-blue-500',
@@ -67,7 +77,7 @@ export default function PricingSection() {
         'Portada impactante',
         'Tabla de precios y servicios',
         'Galería de trabajos o productos',
-        'Sistema de turnos (básico)',
+        'Sistema de turnos/consultas',
         'Formulario de contacto profesional',
         'Integración con WhatsApp',
         'Asesoramiento para dominio y hosting',
@@ -84,7 +94,11 @@ export default function PricingSection() {
       discount: '20% OFF',
       pay: 'Pago único por desarrollo + mantenimiento mensual obligatorio',
       popular: false,
-      mockupUrl: 'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/pro_website_mockup_hr57xf.png',
+      mockupUrls: [
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/pro_web_manicura_gaizuq.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/pro_website_mockup_hr57xf.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822779/pro_web_panaderia_eu82mo.png'
+      ],
       whatsappMessage: 'planPro' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-purple-400 to-pink-500',
@@ -110,6 +124,30 @@ export default function PricingSection() {
       ]
     }
   ];
+
+  const handleOpenModal = (planIndex: number) => {
+    setSelectedPlan(planIndex);
+    setCurrentImageIndex(0);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPlan(null);
+    setCurrentImageIndex(0);
+  };
+
+  const handleNextImage = () => {
+    if (selectedPlan !== null) {
+      const totalImages = plans[selectedPlan].mockupUrls.length;
+      setCurrentImageIndex((prev) => (prev + 1) % totalImages);
+    }
+  };
+
+  const handlePrevImage = () => {
+    if (selectedPlan !== null) {
+      const totalImages = plans[selectedPlan].mockupUrls.length;
+      setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages);
+    }
+  };
 
   return (
     <section id="planes" className="bg-gradient-to-b from-white via-gray-50 to-white py-20 px-4">
@@ -217,7 +255,7 @@ export default function PricingSection() {
                   {/* Botones */}
                   <div className="space-y-3 relative z-10">
                     <button
-                      onClick={() => setSelectedMockup(plan.mockupUrl)}
+                      onClick={() => handleOpenModal(index)}
                       className={`w-full ${plan.colorScheme.button} text-white font-semibold py-4 rounded-xl transition-all block text-center`}
                     >
                       <span>Ver muestra</span>
@@ -260,31 +298,87 @@ export default function PricingSection() {
       </div>
 
       {/* Modal para ver mockup */}
-      {selectedMockup && (
+      {selectedPlan !== null && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-          onClick={() => setSelectedMockup(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4"
+          onClick={handleCloseModal}
         >
           <div 
-            className="relative max-w-6xl w-full max-h-[90vh] bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl"
+className="relative w-full h-[60vh] md:h-[80vh] max-w-6xl bg-zinc-900 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón cerrar */}
-            <button
-              onClick={() => setSelectedMockup(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-              aria-label="Cerrar modal"
-            >
-              <X size={20} />
-            </button>
+            {/* Header con título del plan */}
+            <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-zinc-900 via-zinc-900/95 to-transparent z-20 p-4 md:p-6 pb-8 md:pb-12">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg md:text-2xl font-bold text-white flex items-center gap-2 md:gap-3">
+                  <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-br ${plans[selectedPlan].colorScheme.icon} flex items-center justify-center text-white`}>
+                    {React.cloneElement(plans[selectedPlan].icon, { size: 18 })}
+                  </div>
+                  {plans[selectedPlan].name}
+                </h3>
+                {/* Botón cerrar */}
+                <button
+                  onClick={handleCloseModal}
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                  aria-label="Cerrar modal"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
 
-            {/* Imagen del mockup */}
-            <div className="overflow-auto max-h-[90vh]">
-              <img
-                src={selectedMockup}
-                alt="Muestra del plan"
-                className="w-full h-auto"
-              />
+            {/* Contenedor de imagen con navegación */}
+            <div className="relative h-full flex items-center justify-center">
+              {/* Botón anterior */}
+              <button
+                onClick={handlePrevImage}
+                className="absolute left-2 md:left-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 md:bg-white/10 backdrop-blur-sm border border-white/30 md:border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                aria-label="Imagen anterior"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              {/* Imagen del mockup */}
+              <div className="w-full h-full flex items-center justify-center overflow-hidden px-12 md:px-20 py-16 md:py-4">
+                <img
+                  src={plans[selectedPlan].mockupUrls[currentImageIndex]}
+                  alt={`${plans[selectedPlan].name} - Ejemplo ${currentImageIndex + 1}`}
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
+                />
+              </div>
+
+              {/* Botón siguiente */}
+              <button
+                onClick={handleNextImage}
+                className="absolute right-2 md:right-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 md:bg-white/10 backdrop-blur-sm border border-white/30 md:border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                aria-label="Imagen siguiente"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            {/* Indicador de posición */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900 via-zinc-900/95 to-transparent z-20 p-4 md:p-6 pt-8 md:pt-12">
+              <div className="flex items-center justify-center gap-3 md:gap-4">
+                <span className="text-white font-medium text-sm md:text-base">
+                  {currentImageIndex + 1} / {plans[selectedPlan].mockupUrls.length}
+                </span>
+                {/* Dots indicator */}
+                <div className="flex gap-1.5 md:gap-2">
+                  {plans[selectedPlan].mockupUrls.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentImageIndex(idx)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        idx === currentImageIndex 
+                          ? `bg-gradient-to-r ${plans[selectedPlan].colorScheme.gradient} w-6 md:w-8` 
+                          : 'bg-white/30'
+                      }`}
+                      aria-label={`Ir a imagen ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
