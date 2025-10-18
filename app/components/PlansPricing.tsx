@@ -42,7 +42,6 @@ export default function PricingSection() {
         'Sección de servicios',
         'Ubicación en Google Maps',
         'Links a redes sociales',
-        'Optimización SEO básica y carga rápida',
         '1 página profesional',
         'Entrega en 5-7 días'
       ]
@@ -80,6 +79,7 @@ export default function PricingSection() {
         'Sistema de turnos/consultas',
         'Formulario de contacto profesional',
         'Integración con WhatsApp',
+        'Optimización SEO básica',
         'Asesoramiento para dominio y hosting',
         'Entrega en 10-14 días'
       ]
@@ -135,14 +135,16 @@ export default function PricingSection() {
     setCurrentImageIndex(0);
   };
 
-  const handleNextImage = () => {
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (selectedPlan !== null) {
       const totalImages = plans[selectedPlan].mockupUrls.length;
       setCurrentImageIndex((prev) => (prev + 1) % totalImages);
     }
   };
 
-  const handlePrevImage = () => {
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (selectedPlan !== null) {
       const totalImages = plans[selectedPlan].mockupUrls.length;
       setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages);
@@ -300,79 +302,94 @@ export default function PricingSection() {
       {/* Modal para ver mockup */}
       {selectedPlan !== null && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm"
           onClick={handleCloseModal}
         >
-          <div 
-className="relative w-full h-[60vh] md:h-[80vh] max-w-6xl bg-zinc-900 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header con título del plan */}
-            <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-zinc-900 via-zinc-900/95 to-transparent z-20 p-4 md:p-6 pb-8 md:pb-12">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg md:text-2xl font-bold text-white flex items-center gap-2 md:gap-3">
-                  <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-br ${plans[selectedPlan].colorScheme.icon} flex items-center justify-center text-white`}>
-                    {React.cloneElement(plans[selectedPlan].icon, { size: 18 })}
-                  </div>
-                  {plans[selectedPlan].name}
-                </h3>
-                {/* Botón cerrar */}
-                <button
-                  onClick={handleCloseModal}
-                  className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
-                  aria-label="Cerrar modal"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+          <div className="h-full w-full flex flex-col p-4">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4 flex-shrink-0">
+              <h3 className="text-lg md:text-2xl font-bold text-white flex items-center gap-3">
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${plans[selectedPlan].colorScheme.icon} flex items-center justify-center text-white`}>
+                  {React.cloneElement(plans[selectedPlan].icon, { size: 20 })}
+                </div>
+                {plans[selectedPlan].name}
+              </h3>
+              <button
+                onClick={handleCloseModal}
+                className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                aria-label="Cerrar modal"
+              >
+                <X size={20} />
+              </button>
             </div>
 
-            {/* Contenedor de imagen con navegación */}
-            <div className="relative h-full flex items-center justify-center">
-              {/* Botón anterior */}
+            {/* Imagen - ocupa el espacio restante */}
+            <div 
+              className="flex-1 relative flex items-center justify-center min-h-0"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Botones Desktop */}
               <button
                 onClick={handlePrevImage}
-                className="absolute left-2 md:left-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 md:bg-white/10 backdrop-blur-sm border border-white/30 md:border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                className="hidden md:flex absolute left-4 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 items-center justify-center text-white hover:bg-white/20 transition-all"
                 aria-label="Imagen anterior"
               >
                 <ChevronLeft size={20} />
               </button>
 
-              {/* Imagen del mockup */}
-              <div className="w-full h-full flex items-center justify-center overflow-hidden px-12 md:px-20 py-16 md:py-4">
-                <img
-                  src={plans[selectedPlan].mockupUrls[currentImageIndex]}
-                  alt={`${plans[selectedPlan].name} - Ejemplo ${currentImageIndex + 1}`}
-                  className="max-w-full max-h-full w-auto h-auto object-contain"
-                />
-              </div>
+              <img
+                src={plans[selectedPlan].mockupUrls[currentImageIndex]}
+                alt={`${plans[selectedPlan].name} - Ejemplo ${currentImageIndex + 1}`}
+                className="max-w-full max-h-full w-auto h-auto object-contain"
+                onClick={(e) => e.stopPropagation()}
+              />
 
-              {/* Botón siguiente */}
               <button
                 onClick={handleNextImage}
-                className="absolute right-2 md:right-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 md:bg-white/10 backdrop-blur-sm border border-white/30 md:border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+                className="hidden md:flex absolute right-4 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 items-center justify-center text-white hover:bg-white/20 transition-all"
                 aria-label="Imagen siguiente"
               >
                 <ChevronRight size={20} />
               </button>
             </div>
 
-            {/* Indicador de posición */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900 via-zinc-900/95 to-transparent z-20 p-4 md:p-6 pt-8 md:pt-12">
-              <div className="flex items-center justify-center gap-3 md:gap-4">
-                <span className="text-white font-medium text-sm md:text-base">
+            {/* Footer con botones mobile */}
+            <div className="mt-4 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+              {/* Botones Mobile */}
+              <div className="md:hidden flex items-center justify-center gap-4 mb-4">
+                <button
+                  onClick={handlePrevImage}
+                  className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white active:bg-white/20 transition-all"
+                  aria-label="Imagen anterior"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white active:bg-white/20 transition-all"
+                  aria-label="Imagen siguiente"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+              
+              {/* Indicadores */}
+              <div className="flex items-center justify-center gap-4">
+                <span className="text-white font-medium text-sm">
                   {currentImageIndex + 1} / {plans[selectedPlan].mockupUrls.length}
                 </span>
-                {/* Dots indicator */}
-                <div className="flex gap-1.5 md:gap-2">
+                <div className="flex gap-2">
                   {plans[selectedPlan].mockupUrls.map((_, idx) => (
                     <button
                       key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-2 h-2 rounded-full transition-all ${
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentImageIndex(idx);
+                      }}
+                      className={`h-2 rounded-full transition-all ${
                         idx === currentImageIndex 
-                          ? `bg-gradient-to-r ${plans[selectedPlan].colorScheme.gradient} w-6 md:w-8` 
-                          : 'bg-white/30'
+                          ? `bg-gradient-to-r ${plans[selectedPlan].colorScheme.gradient} w-8` 
+                          : 'bg-white/30 w-2'
                       }`}
                       aria-label={`Ir a imagen ${idx + 1}`}
                     />

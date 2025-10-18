@@ -136,7 +136,7 @@ export default function TestimonialsSection() {
     },
     {
       name: 'Isabella Ortiz',
-      role: 'Dueña de cine',
+      role: 'Dueña de veterinaria',
       rating: 5,
       category: 'Inversión',
       text: 'Muy profesional. La inversión valió totalmente la pena.',

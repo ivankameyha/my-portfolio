@@ -65,7 +65,7 @@ export default function Footer() {
             </a>
             <div className="flex items-center justify-center gap-3 text-gray-400 py-2">
               <MapPin size={18} />
-              <span>{siteConfig.contact.location}</span>
+              <span className="text-sm">{siteConfig.contact.location}</span>
             </div>
           </div>
 
