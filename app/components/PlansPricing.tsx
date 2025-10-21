@@ -95,9 +95,7 @@ export default function PricingSection() {
       pay: 'Pago único por desarrollo + mantenimiento mensual obligatorio',
       popular: false,
       mockupUrls: [
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/pro_web_manicura_gaizuq.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/pro_website_mockup_hr57xf.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822779/pro_web_panaderia_eu82mo.png'
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761058305/pro_web1_avjgi2.png',
       ],
       whatsappMessage: 'planPro' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
