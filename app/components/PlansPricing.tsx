@@ -22,9 +22,9 @@ export default function PricingSection() {
       discount: '25% OFF',
       popular: false,
       mockupUrls: [
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/simple_website_mockup_ohxutj.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/simple_web_veterinaria_zomp77.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/simple_web_forrajeria_dphlh5.png'
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web1_r4786b.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web2_zqnu2p.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web3_wwkvb0.png'
       ],
       whatsappMessage: 'planSimple' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
@@ -57,9 +57,10 @@ export default function PricingSection() {
       pay: 'Pago único',
       popular: true,
       mockupUrls: [
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/full_web_negocios_zviuqd.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760540336/full_website_mockup_bpy5z6.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1760822778/full_web_barber_xjixxz.png'
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/full_web1_qi9tzy.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web2_os972s.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web3_dhfnce.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web4_mwauu0.png'
       ],
       whatsappMessage: 'planCompleta' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
@@ -95,7 +96,9 @@ export default function PricingSection() {
       pay: 'Pago único por desarrollo + mantenimiento mensual obligatorio',
       popular: false,
       mockupUrls: [
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761058305/pro_web1_avjgi2.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/pro_web1_tnytyi.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082577/pro_web2_zxmokp.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/pro_web3_bogglh.png',
       ],
       whatsappMessage: 'planPro' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
