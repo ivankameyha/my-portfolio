@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle, X, ChevronLeft, ChevronRight, Clock, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { siteConfig } from '@/config/site';
 import React from 'react';
@@ -9,6 +9,7 @@ export default function PricingSection() {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [expandedPlan, setExpandedPlan] = useState<number | null>(null);
 
   const plans = [
     {
@@ -20,11 +21,13 @@ export default function PricingSection() {
       price: '$60.000',
       pay: 'Pago único',
       discount: '25% OFF',
+      deliveryTime: '5-7 días',
       popular: false,
       mockupUrls: [
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web1_r4786b.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761176562/simple_web1_neyvol.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web3_dhfnce.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web3_wwkvb0.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web2_zqnu2p.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web3_wwkvb0.png'
       ],
       whatsappMessage: 'planSimple' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
@@ -37,29 +40,31 @@ export default function PricingSection() {
         tagline: 'text-emerald-500'
       },
       features: [
-        'Diseño responsive (celular, tablet y PC)',
-        'Botón directo a WhatsApp',
-        'Sección de servicios',
-        'Ubicación en Google Maps',
-        'Links a redes sociales',
-        '1 página profesional',
-        'Entrega en 5-7 días'
+        { text: 'Portada simple', included: true },
+        { text: 'Integración con WhatsApp', included: true },
+        { text: 'Sección de servicios', included: true },
+        { text: 'Google Maps + redes sociales', included: true },
+        { text: '1 página profesional', included: true },
+
+        { text: 'Galería de imágenes', included: false },
+        { text: 'Sistema de turnos', included: false }
       ]
     },
     {
       icon: <Crown size={24} />,
       name: 'Web Completa',
       tagline: 'Pensada para negocios que quieren destacar',
-      description: 'Sitio completo con estilo visual y estructura clara',
+      description: 'Sitio con estilo visual y estructura clara',
       oldPrice: '$160.000',
       price: '$120.000',
       discount: '25% OFF',
       pay: 'Pago único',
+      deliveryTime: '10-14 días',
       popular: true,
       mockupUrls: [
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/full_web1_qi9tzy.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761177486/full_web5_ivp9th.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web2_os972s.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web3_dhfnce.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/full_web1_qi9tzy.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web4_mwauu0.png'
       ],
       whatsappMessage: 'planCompleta' as keyof typeof siteConfig.whatsappMessages,
@@ -73,27 +78,28 @@ export default function PricingSection() {
         tagline: 'text-cyan-500'
       },
       features: [
-        'Todo lo del plan anterior',
-        'Portada impactante',
-        'Tabla de precios y servicios',
-        'Galería de trabajos o productos',
-        'Sistema de turnos/consultas',
-        'Formulario de contacto profesional',
-        'Integración con WhatsApp',
-        'Optimización SEO básica',
-        'Asesoramiento para dominio y hosting',
-        'Entrega en 10-14 días'
+        { text: 'Todo lo del plan anterior', included: true },
+        { text: 'Portada impactante', included: true },
+        { text: 'Galería de trabajos o productos', included: true },
+        { text: 'Sistema de turnos/consultas', included: true },
+        { text: 'Formulario profesional', included: true },
+        { text: 'Optimización SEO básica', included: true },
+
+        { text: 'Reservas automatizadas', included: false },
+        { text: 'Pagos con MercadoPago', included: false },
+        { text: 'Panel administrativo', included: false },
       ]
     },
     {
       icon: <Gem size={24} />,
       name: 'Web Pro',
-      tagline: 'Perfecta para marcas que buscan automatizar reservas y cobros',
+      tagline: 'Perfecta para marcas que buscan automatizar su trabajo',
       description: 'Sistema completo de reservas y pagos online',
       oldPrice: '$600.000',
       price: '$480.000',
       discount: '20% OFF',
-      pay: 'Pago único por desarrollo + mantenimiento mensual obligatorio',
+      pay: 'Pago único + mantenimiento mensual',
+      deliveryTime: '20-25 días',
       popular: false,
       mockupUrls: [
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/pro_web1_tnytyi.png',
@@ -111,17 +117,16 @@ export default function PricingSection() {
         tagline: 'text-purple-500'
       },
       features: [
-        'Todo lo del plan anterior',
-        'Sistema de reservas online en tiempo real',
-        'Pagos automáticos con MercadoPago',
-        'Gestión inteligente de turnos',
-        'Panel de administración',
-        'Multi-sucursal',
-        'Notificaciones automáticas',
-        'Reportes y estadísticas',
-        'Mantenimiento técnico y soporte premium',
-        'Hosting y dominio .com / .com.ar',
-        'Entrega en 20-25 días'
+        { text: 'Todo lo del plan anterior', included: true },
+        { text: 'Reservas automatizadas en tiempo real', included: true },
+        { text: 'Pagos con MercadoPago', included: true },
+        { text: 'Panel de administración', included: true },
+        { text: 'Multi-sucursal', included: true },
+        { text: 'Notificaciones automáticas', included: true },
+        { text: 'Reportes y estadísticas', included: true },
+        { text: 'Primer mes de mantenimiento gratuito', included: true },
+        { text: 'Hosting + dominio incluido', included: true },
+
       ]
     }
   ];
@@ -201,12 +206,25 @@ export default function PricingSection() {
                 )}
 
                 {/* Card Content */}
-                <div className={`bg-white border-2 rounded-2xl p-8 h-full flex flex-col relative overflow-hidden shadow-lg hover:shadow-xl transition-all ${
-                  plan.popular ? plan.colorScheme.border + ' shadow-xl' : 'border-gray-200'
+                <div className={`border-2 rounded-2xl p-6 h-full flex flex-col relative overflow-hidden shadow-lg hover:shadow-xl transition-all ${
+                  plan.popular 
+                    ? `${plan.colorScheme.border} shadow-xl bg-gradient-to-br from-cyan-50 to-blue-50` 
+                    : 'border-gray-200 bg-white'
                 }`}>
                   
+                  {/* Efecto de brillo sutil en la card popular */}
+                  {plan.popular && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 pointer-events-none"></div>
+                  )}
+                  
+                  {/* Badge de tiempo de entrega - esquina superior derecha */}
+                  <div className="absolute top-6 right-4 flex items-center gap-1.5 bg-gray-100 border border-gray-200 rounded-full px-3 py-1.5 z-10">
+                    <Clock size={14} className="text-gray-600" />
+                    <span className="text-xs font-medium text-gray-600">Entrega en {plan.deliveryTime}</span>
+                  </div>
+
                   {/* Icono */}
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${plan.colorScheme.icon} flex items-center justify-center text-white mb-6 relative z-10`}>
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${plan.colorScheme.icon} flex items-center justify-center text-white mb-4 relative z-10`}>
                     {plan.icon}
                   </div>
 
@@ -221,12 +239,12 @@ export default function PricingSection() {
                   </p>
 
                   {/* Descripción */}
-                  <p className="text-gray-600 text-sm mb-6 relative z-10">
+                  <p className="text-gray-600 text-sm mb-4 relative z-10">
                     {plan.description}
                   </p>
 
                   {/* Precio */}
-                  <div className="mb-8 relative z-10">
+                  <div className="mb-5 relative z-10">
                     {/* Precio anterior tachado */}
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-xl text-gray-400 line-through">
@@ -245,18 +263,45 @@ export default function PricingSection() {
                     <p className="text-gray-400 text-sm mt-1">{plan.pay}</p>
                   </div>
 
-                  {/* Features */}
-                  <ul className="space-y-3 mb-8 flex-grow relative z-10">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <Check size={20} className={`${plan.colorScheme.check} flex-shrink-0 mt-0.5`} />
-                        <span className="text-gray-600 text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Features - Desktop: siempre visible, Mobile: acordeón */}
+                  <div className="mb-5 flex-grow relative z-10">
+                    {/* Botón acordeón - solo visible en mobile */}
+                    <button
+                      onClick={() => setExpandedPlan(expandedPlan === index ? null : index)}
+                      className="md:hidden w-full flex items-center justify-between py-3 px-4 bg-gray-50 rounded-xl border border-gray-200 mb-3 hover:bg-gray-100 transition-colors"
+                    >
+                      <span className="text-sm font-semibold text-gray-700">
+                        Ver características incluidas ({plan.features.filter(f => f.included).length})
+                      </span>
+                      <ChevronDown 
+                        size={20} 
+                        className={`text-gray-600 transition-transform duration-300 ${expandedPlan === index ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+
+                    {/* Lista de features con animación suave */}
+                    <div className={`md:block overflow-hidden transition-all duration-300 ease-in-out ${
+                      expandedPlan === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'
+                    }`}>
+                      <ul className="space-y-2">
+                        {plan.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            {feature.included ? (
+                              <Check size={20} className={`${plan.colorScheme.check} flex-shrink-0 mt-0.5`} />
+                            ) : (
+                              <X size={20} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                            )}
+                            <span className={`text-sm ${feature.included ? 'text-gray-600' : 'text-gray-400 line-through'}`}>
+                              {feature.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
 
                   {/* Botones */}
-                  <div className="space-y-3 relative z-10">
+                  <div className="space-y-2 relative z-10">
                     <button
                       onClick={() => handleOpenModal(index)}
                       className={`w-full ${plan.colorScheme.button} text-white font-semibold py-4 rounded-xl transition-all block text-center`}
