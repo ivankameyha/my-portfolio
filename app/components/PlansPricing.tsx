@@ -85,7 +85,7 @@ export default function PricingSection() {
         { text: 'Formulario profesional', included: true },
         { text: 'Optimización SEO básica', included: true },
 
-        { text: 'Reservas automatizadas', included: false },
+        { text: 'Reservas online', included: false },
         { text: 'Pagos con MercadoPago', included: false },
         { text: 'Panel administrativo', included: false },
       ]
@@ -118,8 +118,8 @@ export default function PricingSection() {
       },
       features: [
         { text: 'Todo lo del plan anterior', included: true },
-        { text: 'Reservas automatizadas en tiempo real', included: true },
-        { text: 'Pagos con MercadoPago', included: true },
+        { text: 'Reservas online', included: true },
+        { text: 'Pagos automáticos con MercadoPago', included: true },
         { text: 'Panel de administración', included: true },
         { text: 'Multi-sucursal', included: true },
         { text: 'Notificaciones automáticas', included: true },
