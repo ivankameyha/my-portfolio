@@ -4,6 +4,7 @@ import GoogleAnalytics from "./components/GoogleAnalitycs";
 import MicrosoftClarity from "./components/MicrosoftClarity";
 import "./globals.css";
 import PreloaderMinimal from "./components/Preloader";
+import InAppBrowserDetector from "./components/InAppBrowserDetector";
 
 
 const geistSans = Geist({
@@ -120,6 +121,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <InAppBrowserDetector />
         <PreloaderMinimal />
         <GoogleAnalytics />
         <MicrosoftClarity />
