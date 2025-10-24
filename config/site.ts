@@ -20,6 +20,7 @@ export const siteConfig = {
 
   whatsappMessages: {
     general: "Hola! Me interesa tu trabajo",
+    planTurnos: "Hola! Me interesa el plan Web Turnos",
     planSimple: "Hola! Me interesa el plan Web Simple",
     planCompleta: "Hola! Me interesa el plan Web Completa",
     planPro: "Hola! Me interesa el plan Web Pro",
@@ -27,10 +28,11 @@ export const siteConfig = {
     consultation: "Hola! Necesito asesoramiento sobre qué plan elegir",
   } as const,
 
-  getWhatsAppUrl: (message: 'general' | 'planSimple' | 'planCompleta' | 'planPro' | 'custom' | 'consultation' = 'general') => {
+  getWhatsAppUrl: (message: 'general' | 'planTurnos' | 'planSimple' | 'planCompleta' | 'planPro' | 'custom' | 'consultation' = 'general') => {
     const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5493813423617";
     const messages = {
       general: "Hola! Me interesa tu trabajo",
+      planTurnos: "Hola! Me interesa el plan Web Turnos",
       planSimple: "Hola! Me interesa el plan Web Simple",
       planCompleta: "Hola! Me interesa el plan Web Completa",
       planPro: "Hola! Me interesa el plan Web Pro",

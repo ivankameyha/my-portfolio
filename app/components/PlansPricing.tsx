@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle, X, ChevronLeft, ChevronRight, Clock, ChevronDown } from 'lucide-react';
+import { Check, Sparkles, Rocket, Crown, Gem, MessageCircle, X, ChevronLeft, ChevronRight, Clock, ChevronDown, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { siteConfig } from '@/config/site';
 import React from 'react';
@@ -12,6 +12,38 @@ export default function PricingSection() {
   const [expandedPlan, setExpandedPlan] = useState<number | null>(null);
 
   const plans = [
+    {
+      icon: <Calendar size={24} />,
+      name: 'Web Turnos',
+      tagline: 'La forma más simple de manejar tus turnos online',
+      description: 'Solo para rubros seleccionados (barberías, salones, estudios, gimnasios, etc.)',
+      oldPrice: '',
+      price: '$20.000/m',
+      discount: '',
+      pay: 'Mensual',
+      deliveryTime: '3-5 días',
+      popular: false,
+      mockupUrls: [
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761299713/turno_web1_f14c22.png',
+      ],
+      whatsappMessage: 'planTurnos' as keyof typeof siteConfig.whatsappMessages,
+      colorScheme: {
+        gradient: 'from-orange-400 to-red-500',
+        border: 'border-orange-400',
+        badge: 'bg-orange-500/10 border-orange-500/20 text-orange-400',
+        button: 'bg-orange-500 hover:bg-orange-400',
+        icon: 'from-orange-400 to-red-500',
+        check: 'text-orange-500',
+        tagline: 'text-orange-500'
+      },
+      features: [
+        { text: 'Sistema de reservas online', included: true },
+        { text: 'Pagos automáticos con MercadoPago', included: true },
+        { text: 'Panel de control para el dueño', included: true },
+        { text: 'Hosting incluido', included: true },
+        { text: 'Mantenimiento incluido', included: true },
+      ]
+    },
     {
       icon: <Rocket size={24} />,
       name: 'Web Simple',
@@ -98,7 +130,7 @@ export default function PricingSection() {
       oldPrice: '$600.000',
       price: '$480.000',
       discount: '20% OFF',
-      pay: 'Pago único + mantenimiento mensual',
+      pay: 'Pago único + $20.000/m',
       deliveryTime: '20-25 días',
       popular: false,
       mockupUrls: [
@@ -118,8 +150,9 @@ export default function PricingSection() {
       },
       features: [
         { text: 'Todo lo del plan anterior', included: true },
-        { text: 'Reservas online', included: true },
+        { text: 'Sistema de reservas online', included: true },
         { text: 'Pagos automáticos con MercadoPago', included: true },
+        { text: 'Carrito de compras (opcional)', included: true },
         { text: 'Panel de administración', included: true },
         { text: 'Multi-sucursal', included: true },
         { text: 'Notificaciones automáticas', included: true },
@@ -179,8 +212,8 @@ export default function PricingSection() {
           </div>
         </div>
 
-        {/* Grid de Planes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Grid de Planes - AHORA CON 4 COLUMNAS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {plans.map((plan, index) => {
             const isHovered = hoveredPlan === index;
             
@@ -198,7 +231,7 @@ export default function PricingSection() {
                 {/* Badge "Más Elegido" */}
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                    <div className={`bg-gradient-to-r ${plan.colorScheme.gradient} text-white px-6 py-2 rounded-full font-semibold text-sm shadow-lg flex items-center gap-2`}>
+                    <div className={`bg-gradient-to-r ${plan.colorScheme.gradient} text-white px-6 py-2 rounded-full font-semibold text-sm md:text-[10px] shadow-lg flex items-center gap-2`}>
                       <Sparkles size={16} />
                       <span>MÁS ELEGIDO</span>
                     </div>
@@ -245,15 +278,19 @@ export default function PricingSection() {
 
                   {/* Precio */}
                   <div className="mb-5 relative z-10">
-                    {/* Precio anterior tachado */}
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl text-gray-400 line-through">
-                        {plan.oldPrice}
-                      </span>
-                      <span className={`inline-flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full ${plan.colorScheme.badge}`}>
-                        🔥 {plan.discount}
-                      </span>
-                    </div>
+                    {/* Precio anterior tachado - solo si existe */}
+                    {plan.oldPrice && (
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xl text-gray-400 line-through">
+                          {plan.oldPrice}
+                        </span>
+                        {plan.discount && (
+                          <span className={`inline-flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full ${plan.colorScheme.badge}`}>
+                            🔥 {plan.discount}
+                          </span>
+                        )}
+                      </div>
+                    )}
                     {/* Precio actual */}
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold text-gray-900">
