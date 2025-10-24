@@ -14,9 +14,9 @@ export default function PricingSection() {
   const plans = [
     {
       icon: <Calendar size={24} />,
-      name: 'Web Turnos',
-      tagline: 'La forma más simple de manejar tus turnos online',
-      description: 'Solo para rubros seleccionados (barberías, salones, estudios, gimnasios, etc.)',
+      name: 'Web Reservas',
+      tagline: 'La forma más simple de manejar tus reservas online',
+      description: 'Solo para rubros seleccionados (barberías, salones, estudios, gimnasios, comidas, etc.)',
       oldPrice: '',
       price: '$20.000/m',
       discount: '',
@@ -26,7 +26,7 @@ export default function PricingSection() {
       mockupUrls: [
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761299713/turno_web1_f14c22.png',
       ],
-      whatsappMessage: 'planTurnos' as keyof typeof siteConfig.whatsappMessages,
+      whatsappMessage: 'planReservas' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-orange-400 to-red-500',
         border: 'border-orange-400',
@@ -113,7 +113,7 @@ export default function PricingSection() {
         { text: 'Todo lo del plan anterior', included: true },
         { text: 'Portada impactante', included: true },
         { text: 'Galería de trabajos o productos', included: true },
-        { text: 'Sistema de turnos/consultas', included: true },
+        { text: 'Sistema de turnos al WhatsApp', included: true },
         { text: '3 secciones profesionales', included: true },
         { text: 'Optimización SEO básica', included: true },
 
