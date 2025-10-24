@@ -141,6 +141,14 @@ export default function TestimonialsSection() {
       category: 'Inversión',
       text: 'Muy profesional. La inversión valió totalmente la pena.',
       avatar: 'IO'
+    },
+    {
+      name: 'Julian Ruiz',
+      role: 'Lavadero de autos',
+      rating: 4,
+      category: 'Calidad',
+      text: 'Muy util el sistema de reservas',
+      avatar: 'JR'
     }
   ];
 

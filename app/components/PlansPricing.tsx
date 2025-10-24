@@ -56,10 +56,10 @@ export default function PricingSection() {
       deliveryTime: '5-7 días',
       popular: false,
       mockupUrls: [
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web2_zqnu2p.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761176562/simple_web1_neyvol.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web3_dhfnce.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web3_wwkvb0.png',
-        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/simple_web2_zqnu2p.png',
       ],
       whatsappMessage: 'planSimple' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {

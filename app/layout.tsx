@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     url: "https://ivankameyha.com.ar",
     siteName: "Iván Kameyha - Desarrollador Full Stack",
     title: "Iván Kameyha | Desarrollador Full Stack",
-    description: "Desarrollo web profesional. Sitios modernos y sistemas de reservas. +50 clientes satisfechos. Planes desde $60.000.",
+    description: "Desarrollo web profesional. Sitios modernos y sistemas de reservas. +50 clientes satisfechos. Planes desde $20.000.",
     images: [
       {
         url: "/og-image.jpg", // Deberás crear esta imagen 1200x630px
