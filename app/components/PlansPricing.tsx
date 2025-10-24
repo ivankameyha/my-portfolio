@@ -119,6 +119,7 @@ export default function PricingSection() {
 
         { text: 'Reservas online', included: false },
         { text: 'Pagos con MercadoPago', included: false },
+        { text: 'Carrito de compras', included: false },
         { text: 'Panel administrativo', included: false },
       ]
     },
@@ -126,7 +127,7 @@ export default function PricingSection() {
       icon: <Gem size={24} />,
       name: 'Web Pro',
       tagline: 'Perfecta para marcas que buscan automatizar su trabajo',
-      description: 'Sistema completo de reservas y pagos online',
+      description: 'Sistema completo y profesional de reservas y pagos online',
       oldPrice: '$600.000',
       price: '$480.000',
       discount: '20% OFF',
