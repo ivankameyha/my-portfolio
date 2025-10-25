@@ -18,6 +18,51 @@ export default function InAppBrowserDetector() {
     
     if (isInstagram || isFacebook || isTwitter || isLinkedIn || isTikTok) {
       setIsInAppBrowser(true);
+      
+      // Detectar desde qué red social viene
+      let platform = 'redes sociales';
+      if (isInstagram) platform = 'Instagram';
+      else if (isFacebook) platform = 'Facebook';
+      else if (isLinkedIn) platform = 'LinkedIn';
+      else if (isTikTok) platform = 'TikTok';
+      
+      // Verificar si ya se mostró el alert
+      const alertKey = 'inapp-alert-shown-v2';
+      const hasShownAlert = sessionStorage.getItem(alertKey);
+      
+      if (!hasShownAlert) {
+        setTimeout(() => {
+          const userWantsToOpen = window.confirm(
+            `📱 Navegador de ${platform} Detectado\n\n` +
+            `Estás viendo este sitio desde ${platform}. ` +
+            `Algunos elementos pueden no verse correctamente.\n\n` +
+            `Se recomienda:\n` +
+            `• Abrir en Safari (iOS)\n` +
+            `• Abrir en Chrome (Android)\n\n` +
+            `¿Deseas abrir en tu navegador ahora?`
+          );
+          
+          if (userWantsToOpen) {
+            // Abrir en navegador externo
+            const opened = window.open(window.location.href, '_blank');
+            
+            // Si no se pudo abrir, mostrar instrucciones
+            if (!opened) {
+              setTimeout(() => {
+                window.alert(
+                  'ℹ️ No se pudo abrir automáticamente\n\n' +
+                  'Para abrir en tu navegador:\n\n' +
+                  '1. Toca los 3 puntos (•••) arriba\n' +
+                  '2. Selecciona "Abrir en navegador"\n' +
+                  '3. O toca el botón naranja arriba 👆'
+                );
+              }, 300);
+            }
+          }
+          
+          sessionStorage.setItem(alertKey, 'true');
+        }, 1000);
+      }
     }
   }, []);
 
@@ -30,13 +75,25 @@ export default function InAppBrowserDetector() {
           <div className="flex items-center gap-3 flex-1 min-w-0">
             <ExternalLink size={20} className="flex-shrink-0" />
             <p className="text-sm font-medium">
-              Para una mejor experiencia, abre este sitio en tu navegador
+              Para una mejor experiencia, <br className="sm:hidden" />
+              abre este sitio en tu navegador
             </p>
           </div>
           <button
             onClick={() => {
               // Intentar abrir en navegador externo
-              window.open(window.location.href, '_blank');
+              const opened = window.open(window.location.href, '_blank');
+              
+              // Si falló, mostrar instrucciones
+              if (!opened) {
+                setTimeout(() => {
+                  window.alert(
+                    'ℹ️ Para abrir en navegador:\n\n' +
+                    '1. Toca los 3 puntos (•••)\n' +
+                    '2. Selecciona "Abrir en Safari/Chrome"'
+                  );
+                }, 300);
+              }
             }}
             className="flex-shrink-0 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-4 py-2 rounded-lg text-sm whitespace-nowrap transition-colors"
           >
