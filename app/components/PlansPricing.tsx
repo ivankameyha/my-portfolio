@@ -14,8 +14,8 @@ export default function PricingSection() {
   const plans = [
     {
       icon: <Calendar size={24} />,
-      name: 'Web Reservas',
-      tagline: 'La forma más simple de manejar tus reservas online',
+      name: 'Web Flex',
+      tagline: 'La forma más simple de manejar tu negocio online',
       description: 'Solo para rubros seleccionados (barberías, salones, estudios, gimnasios, comidas, etc.)',
       oldPrice: '',
       price: '$20.000/m',
@@ -25,8 +25,9 @@ export default function PricingSection() {
       popular: false,
       mockupUrls: [
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761299713/turno_web1_f14c22.png',
+        'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761602503/flex_web2_olzstc.png'
       ],
-      whatsappMessage: 'planReservas' as keyof typeof siteConfig.whatsappMessages,
+      whatsappMessage: 'planFlex' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-orange-400 to-red-500',
         border: 'border-orange-400',
@@ -37,7 +38,7 @@ export default function PricingSection() {
         tagline: 'text-orange-500'
       },
       features: [
-        { text: 'Sistema de reservas online', included: true },
+        { text: 'Sistema de reservas o carrito (a elección)', included: true },
         { text: 'Pagos automáticos con MercadoPago', included: true },
         { text: 'Panel de control para el dueño', included: true },
         { text: 'Hosting incluido', included: true },
@@ -72,19 +73,19 @@ export default function PricingSection() {
         tagline: 'text-emerald-500'
       },
       features: [
-        { text: 'Portada simple', included: true },
+        { text: 'Portada impactante', included: true },
         { text: 'Integración con WhatsApp', included: true },
         { text: 'Sección de servicios', included: true },
         { text: 'Google Maps + redes sociales', included: true },
         { text: '1 página profesional', included: true },
 
         { text: 'Galería de imágenes', included: false },
-        { text: 'Sistema de turnos', included: false }
+        { text: 'Sistema de turnos o carrito', included: false }
       ]
     },
     {
       icon: <Crown size={24} />,
-      name: 'Web Completa',
+      name: 'Web Avanzada',
       tagline: 'Pensada para negocios que quieren destacar',
       description: 'Sitio con estilo visual y estructura clara',
       oldPrice: '$200.000',
@@ -99,7 +100,7 @@ export default function PricingSection() {
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082578/full_web1_qi9tzy.png',
         'https://res.cloudinary.com/dzvjpzzxb/image/upload/v1761082579/full_web4_mwauu0.png'
       ],
-      whatsappMessage: 'planCompleta' as keyof typeof siteConfig.whatsappMessages,
+      whatsappMessage: 'planAvanzada' as keyof typeof siteConfig.whatsappMessages,
       colorScheme: {
         gradient: 'from-cyan-400 to-blue-500',
         border: 'border-cyan-400',
@@ -111,9 +112,8 @@ export default function PricingSection() {
       },
       features: [
         { text: 'Todo lo del plan anterior', included: true },
-        { text: 'Portada impactante', included: true },
-        { text: 'Galería de trabajos o productos', included: true },
-        { text: 'Sistema de turnos al WhatsApp', included: true },
+        { text: 'Galería de imágenes', included: true },
+        { text: 'Sistema de turnos o carrito al WhatsApp (a elección)', included: true },
         { text: '3 secciones profesionales', included: true },
         { text: 'Optimización SEO básica', included: true },
 
@@ -127,7 +127,7 @@ export default function PricingSection() {
       icon: <Gem size={24} />,
       name: 'Web Pro',
       tagline: 'Perfecta para marcas que buscan automatizar su trabajo',
-      description: 'Sistema completo y profesional de reservas y pagos online',
+      description: 'Sistema completo y profesional de reservas y carrito online',
       oldPrice: '$600.000',
       price: '$480.000',
       discount: '20% OFF',
@@ -152,8 +152,8 @@ export default function PricingSection() {
       features: [
         { text: 'Todo lo del plan anterior', included: true },
         { text: 'Sistema de reservas online', included: true },
+        { text: 'Carrito de compras', included: true },
         { text: 'Pagos automáticos con MercadoPago', included: true },
-        { text: 'Carrito de compras (opcional)', included: true },
         { text: 'Panel de administración', included: true },
         { text: 'Multi-sucursal', included: true },
         { text: 'Notificaciones automáticas', included: true },

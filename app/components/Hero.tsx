@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin, Instagram, Facebook, Lightbulb } from 'lucide-react';
+import { Github, Linkedin, Instagram, Facebook, ShoppingCart } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 export default function Hero() {
@@ -77,14 +77,14 @@ export default function Hero() {
 
         {/* Título principal */}
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-          Desarrollador <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Full Stack</span><br />
-          <span className="text-gray-400">creando experiencias</span><br />
-          <span className="text-gray-400">innovadoras.</span>
+          Hacé que tu negocio brille <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Online</span><br />
+          <span className="text-gray-400">+ rápido</span><br />
+          <span className="text-gray-400">+ visible</span>
         </h1>
 
         {/* Descripción */}
         <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          Sitios web pensados para destacar tu marca o negocio.
+          Webs que venden, atraen clientes y <br /><span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">funcionan por vos.</span>
         </p>
 
         {/* Botón CTA */}
@@ -92,8 +92,8 @@ export default function Hero() {
           href="#planes"
           className="inline-flex items-center gap-3 bg-cyan-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:bg-cyan-400"
         >
-          <Lightbulb size={20} />
-          <span>Ver planes</span>
+          <ShoppingCart size={20} />
+          <span>Ver precios y planes</span>
         </a>
 
         {/* Redes sociales mobile */}
