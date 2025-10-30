@@ -118,8 +118,8 @@ export default function PricingSection() {
         { text: 'Optimización SEO básica', included: true },
 
         { text: 'Reservas online', included: false },
+        { text: 'Carrito Pro', included: false },
         { text: 'Pagos con MercadoPago', included: false },
-        { text: 'Carrito de compras', included: false },
         { text: 'Panel administrativo', included: false },
       ]
     },
@@ -152,7 +152,7 @@ export default function PricingSection() {
       features: [
         { text: 'Todo lo del plan anterior', included: true },
         { text: 'Sistema de reservas online', included: true },
-        { text: 'Carrito de compras', included: true },
+        { text: 'Carrito de compras Pro', included: true },
         { text: 'Pagos automáticos con MercadoPago', included: true },
         { text: 'Panel de administración', included: true },
         { text: 'Multi-sucursal', included: true },
